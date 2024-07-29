@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import CompClient from "./composants/CompClient";
+
+/**
+ * TP02 : CompClients : route fille pour pouvoir saisir des clients
+ * CG : 27/07/2024
+ */
+
+const Home = () => (
+  <div>
+    <h2>Accueil</h2>
+  </div>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <ul>
+          <li><Link to="/">Accueil</Link></li>
+          <li><Link to="/clients">Clients</Link></li>
+        </ul>
+        <Routes>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/clients/*" element={<CompClient />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
